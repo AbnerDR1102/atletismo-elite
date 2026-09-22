@@ -2,9 +2,33 @@
 const modal = document.getElementById("product-modal");
 let tallaSeleccionada = null;
 
-function abrirModal() {
-    modal.style.display = "flex";
-}
+// Escuchar los clics en todas las tarjetas de productos para hacer el modal dinámico
+document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".product-card");
+    
+    cards.forEach(card => {
+        // Al darle clic a una tarjeta, actualizamos la información del modal
+        card.onclick = function() {
+            // Extraer datos de la tarjeta clickeada
+            const title = card.querySelector('h3').innerText;
+            const newPrice = card.querySelector('.new-price').innerText;
+            
+            // Buscar si tiene precio viejo (oferta)
+            const oldPriceElem = card.querySelector('.old-price');
+            const oldPrice = oldPriceElem ? oldPriceElem.innerText : '';
+
+            // Actualizar el HTML del Modal
+            document.querySelector('.modal-title').innerText = title;
+            // Para el "volver atrás", usamos la primera palabra del título
+            document.querySelector('.back-text').innerHTML = `<i class="ri-arrow-left-line"></i> ${title.split(' ')[0]}`;
+            document.querySelector('.new-price-large').innerText = newPrice;
+            document.querySelector('.old-price-large').innerText = oldPrice;
+
+            // Mostrar el modal
+            modal.style.display = "flex";
+        };
+    });
+});
 
 function cerrarModal() {
     modal.style.display = "none";
@@ -29,7 +53,7 @@ function seleccionarTalla(boton) {
     boton.classList.add('active');
     tallaSeleccionada = boton.innerText;
 
-    // Cambiar el estilo y texto del botón de "SELECCIONAR TALLA" a "AGREGAR AL CARRITO"
+    // Cambiar el estilo y texto del botón de comprar
     let btnCarrito = document.getElementById("add-to-cart-btn");
     btnCarrito.classList.add("ready");
     btnCarrito.innerText = "AGREGAR AL CARRITO";
@@ -52,9 +76,11 @@ function agregarAlCarrito() {
     if (tallaSeleccionada) {
         contadorCarrito++;
         document.querySelector('.cart-count').innerText = contadorCarrito;
-        alert("¡Añadido al carrito con éxito en talla " + tallaSeleccionada + "!");
+        
+        // Obtener el nombre del producto que se está comprando
+        const nombreProducto = document.querySelector('.modal-title').innerText;
+        
+        alert("¡" + nombreProducto + " añadido al carrito en talla " + tallaSeleccionada + "!");
         cerrarModal();
-    } else {
-        // No hace nada si el botón aún dice "SELECCIONAR TALLA" (simula que está deshabilitado)
     }
 }
