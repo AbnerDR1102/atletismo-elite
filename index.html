@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Athletics | Tienda Oficial</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Iconos para el carrito y redes sociales -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- MENÚ DE NAVEGACIÓN -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="Captura_de_pantalla_2026-09-21_200431-removebg-preview.png" alt="Apex Athletics Logo" class="nav-logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#hombre">Hombre</a></li>
+            <li><a href="#mujer">Mujer</a></li>
+            <li><a href="#rebajas" class="highlight">Rebajas</a></li>
+        </ul>
+        <div class="nav-icons">
+            <i class="ri-shopping-cart-2-line cart-icon"></i>
+            <span class="cart-count">0</span>
+        </div>
+    </nav>
+
+    <!-- SECCIÓN DE INICIO (HERO) -->
+    <header id="inicio" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <img src="Captura_de_pantalla_2026-09-21_200431-removebg-preview.png" alt="Apex Athletics" class="hero-logo">
+            <h1>SUPERA TUS LÍMITES</h1>
+            <p>Descubre la nueva colección de ropa fitness de alto rendimiento.</p>
+            <a href="#rebajas" class="btn-primary">VER REBAJAS</a>
+        </div>
+    </header>
+
+    <!-- SECCIÓN DE PRODUCTOS / REBAJAS -->
+    <section id="rebajas" class="products-section">
+        <h2>🔥 REBAJAS DESTACADAS 🔥</h2>
+        <div class="products-grid">
+            
+            <!-- TARJETA DE PRODUCTO 1 (El pantalón que enviaste) -->
+            <div class="product-card" onclick="abrirModal()">
+                <div class="badge-discount">-20%</div>
+                <img src="Pantalon 2.png" alt="Jeans Recto Bleach">
+                <div class="product-info">
+                    <h3>JEANS RECTO BLEACH</h3>
+                    <div class="price-container">
+                        <span class="new-price">$287.20</span>
+                        <span class="old-price">$359.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Puedes duplicar la tarjeta anterior para agregar más productos ficticios -->
+
+        </div>
+    </section>
+
+    <!-- MODAL DE DETALLE DEL PRODUCTO (Estilo a tu captura 2) -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="cerrarModal()">&times;</span>
+            <div class="modal-header">
+                <span class="back-text"><i class="ri-arrow-left-line"></i> JEANS</span>
+                <h2 class="modal-title">JEANS RECTO BLEACH</h2>
+                <div class="modal-price">
+                    <span class="new-price-large">$287.20</span>
+                    <span class="old-price-large">$359.00</span>
+                </div>
+            </div>
+
+            <button class="size-guide-btn">GUÍA DE TALLAS</button>
+
+            <div class="size-grid">
+                <!-- Tallas agotadas (con la clase 'sold-out') -->
+                <button class="size-btn sold-out">28</button>
+                <button class="size-btn sold-out">29</button>
+                <button class="size-btn sold-out">31</button>
+                <!-- Tallas disponibles -->
+                <button class="size-btn" onclick="seleccionarTalla(this)">30</button>
+                <button class="size-btn" onclick="seleccionarTalla(this)">32</button>
+                <button class="size-btn" onclick="seleccionarTalla(this)">33</button>
+                <button class="size-btn" onclick="seleccionarTalla(this)">34</button>
+                <button class="size-btn" onclick="seleccionarTalla(this)">36</button>
+            </div>
+
+            <div class="action-buttons">
+                <button id="add-to-cart-btn" class="add-cart-btn" onclick="agregarAlCarrito()">SELECCIONAR TALLA</button>
+                <button class="wishlist-btn"><i class="ri-heart-line"></i></button>
+            </div>
+
+            <div class="product-details-accordion">
+                <div class="accordion-item">
+                    <h4>DESCRIPCIÓN <span>-</span></h4>
+                    <p>Jeans recto bleach, con cierre y botón en pretina.<br>SKU 217260721010675</p>
+                </div>
+                <div class="accordion-item">
+                    <h4>CUIDADOS <span>+</span></h4>
+                </div>
+                <div class="accordion-item">
+                    <h4>ENVÍO <span>+</span></h4>
+                </div>
+                <div class="accordion-item">
+                    <h4>DEVOLUCIONES <span>+</span></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER (Contactos) -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="Captura_de_pantalla_2026-09-21_200431-removebg-preview.png" alt="Apex Logo">
+            </div>
+            <div class="footer-links">
+                <h3>Contacto</h3>
+                <p><i class="ri-whatsapp-line"></i> +52 123 456 7890</p>
+                <p><i class="ri-mail-line"></i> contacto@apexathletics.com</p>
+                <p><i class="ri-map-pin-line"></i> Sucursal Principal, CDMX</p>
+            </div>
+            <div class="footer-social">
+                <h3>Síguenos</h3>
+                <i class="ri-instagram-line"></i>
+                <i class="ri-facebook-circle-line"></i>
+                <i class="ri-tiktok-fill"></i>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Apex Athletics. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Vinculamos el archivo de JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
